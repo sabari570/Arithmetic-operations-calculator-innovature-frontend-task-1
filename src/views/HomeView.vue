@@ -22,9 +22,6 @@ export default {
       isUserAuthenticated: IS_USER_AUTHENTICATED_GETTER
     })
   },
-  mounted(){
-    console.log("Is user authenticated: ", this.isUserAuthenticated);
-  },
   methods: {
     ...mapActions('auth', {
       onLogout: LOGOUT_ACTION
@@ -56,12 +53,11 @@ export default {
   border-radius: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   box-shadow: 0 15px 16.83px .17px rgba(0, 0, 0, .05);
 }
 
 .calculator-heading {
-  margin-bottom: 1rem;
+  margin-bottom: 2.5rem;
   font-size: 1.5rem;
   text-align: center;
 }
@@ -70,7 +66,6 @@ export default {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 1rem;
 }
 
 .logout-floating-btn {

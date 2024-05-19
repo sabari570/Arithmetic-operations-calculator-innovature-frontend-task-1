@@ -12,7 +12,7 @@
             <label for="password">
                 <i class="fa-solid fa-lock"></i>
             </label>
-            <input type="password" name="password" v-model="password" placeholder="Password" />
+            <input type="password" name="password" v-model="password" placeholder="Password" required />
         </div>
 
         <div class="form-group form-button">
