@@ -1,0 +1,9 @@
+export const LOGIN_ACTION = "[actions] login_user";
+export const ERROR_MESSAGE_MUTATION = "[mutations] error_message";
+export const ERROR_MESSAGE_GETTER = "[getters] error_message_getter";
+export const SET_USER_DATA_MUTATION = "[mutations] set_user_data";
+export const SHOW_LOADING_SPINNER_MUTATION = "[mutations] show_loading_spinner";
+export const GET_USER_ACCESSTOKEN_GETTER = "[getters] get_user_accessToken";
+export const IS_USER_AUTHENTICATED_GETTER = "[getters] is_user_authenticated";
+export const LOGOUT_ACTION = "[actions] logout_user";
+export const AUTO_LOGIN_ACTION = "[actions] auto_login_user";

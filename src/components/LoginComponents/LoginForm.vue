@@ -1,43 +1,75 @@
 <template>
-    <form @submit.prevent="" class="login-form">
+    <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
+    <form @submit.prevent="onLoginFormSubmit" class="login-form">
         <div class="form-group">
             <label for="username">
                 <i class="fa-solid fa-user"></i>
             </label>
-            <input type="text" name="username" placeholder="Username" />
+            <input type="text" name="username" v-model="username" placeholder="Username" required />
         </div>
 
         <div class="form-group">
             <label for="password">
                 <i class="fa-solid fa-lock"></i>
             </label>
-            <input type="password" name="password" placeholder="Password" />
-        </div>
-
-        <div class="form-group remember-me">
-            <input type="checkbox" name="remember-me" class="remember-me-checkbox" />
-            <label for="remember-me" class="remember-me-label">Remember me</label>
+            <input type="password" name="password" v-model="password" placeholder="Password" />
         </div>
 
         <div class="form-group form-button">
-            <button class="login-btn" type="submit">Log in</button>
+            <button class="login-btn" type="submit">
+                <LoaderComponent v-if="isLoading" />
+                <div v-if="!isLoading">Log In</div>
+            </button>
         </div>
     </form>
 </template>
 
 <script>
-
-import 'primeicons/primeicons.css'
-
+import { mapActions, mapGetters, mapMutations, mapState } from 'vuex'
+import { ERROR_MESSAGE_GETTER, IS_USER_AUTHENTICATED_GETTER, LOGIN_ACTION, SHOW_LOADING_SPINNER_MUTATION } from '../../store/storeConstants.js'
+import LoaderComponent from '../Loader/LoaderComponent.vue';
 export default {
-    name: 'LoginForm'
+    name: 'LoginForm',
+    data() {
+        return {
+            username: '',
+            password: '',
+        }
+    },
+    computed: {
+        ...mapGetters('auth', {
+            errorMessage: ERROR_MESSAGE_GETTER,
+            isUserAuthenticated: IS_USER_AUTHENTICATED_GETTER,
+        }),
+        ...mapState({
+            isLoading: (state) => state.showLoading
+        })
+    },
+    methods: {
+        ...mapActions('auth', {
+            onLogin: LOGIN_ACTION
+        }),
+        ...mapMutations({
+            showLoading: SHOW_LOADING_SPINNER_MUTATION,
+        }
+        ),
+        async onLoginFormSubmit() {
+            this.showLoading(true)
+            await this.onLogin({ username: this.username, password: this.password })
+            this.showLoading(false)
+
+            if (this.isUserAuthenticated) {
+                this.$router.push('/')
+            }
+        }
+    },
+    components: { LoaderComponent }
 }
 </script>
 
 <style scoped>
 .login-form {
     width: 70%;
-    padding-top: 1rem;
 }
 
 input {
@@ -93,10 +125,10 @@ input {
     border: none;
     outline: none;
     font-size: 12px;
-    padding: 12px 35px;
+    padding: 14px 35px;
 }
 
-.login-btn:hover{
+.login-btn:hover {
     background-color: #5a97d3;
 }
 </style>

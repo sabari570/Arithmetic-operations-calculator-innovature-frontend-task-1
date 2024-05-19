@@ -27,4 +27,14 @@ export default {
     font-size: 26px;
     width: 70%;
 }
+
+.error-message{
+    font-size: 0.8rem;
+    color: white;
+    background: #ff3f3f;;
+    padding: 5px 15px;
+    margin-top: 0.5rem;
+    border-radius: 5px;
+    width: 75%;
+}
 </style>

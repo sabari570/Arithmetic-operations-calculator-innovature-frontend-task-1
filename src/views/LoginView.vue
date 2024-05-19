@@ -13,7 +13,7 @@ import LoginFormComponentVue from '@/components/LoginComponents/LoginFormCompone
 
 export default {
   name: 'LoginView',
-  components: { LoginBgImageVue, LoginFormComponentVue }
+  components: { LoginBgImageVue, LoginFormComponentVue },
 }
 </script>
 
@@ -39,13 +39,14 @@ export default {
   box-shadow: 0 15px 16.83px .17px rgba(0, 0, 0, .05);
 }
 
-@media (max-width: 700px) {
-  .login-bg{
+@media only screen and (max-width: 768px) {
+  .login-bg {
     height: 50%;
     width: 100%;
     padding: 2rem 0;
   }
-  .login-card{
+
+  .login-card {
     display: flex;
     flex-direction: column;
     width: 80%;

@@ -2,30 +2,42 @@
   <div class="home-bg">
     <div class="calculator-card">
       <h2 class="calculator-heading">API Calculator</h2>
-      <div class="input-group">
-        <input type="number" v-model="number1" min="0" placeholder="Enter number" />
-        <input type="number" v-model="number2" min="0" placeholder="Enter number" />
-      </div>
-      <div class="operations">
-        <button class="calc-operations">+</button>
-        <button class="calc-operations">-</button>
-        <button class="calc-operations">x</button>
-        <button class="calc-operations">/</button>
-      </div>
-      <div class="result">
-        <h3>Result: 7</h3>
-      </div>
+      <CalculatorBodyComponent />
+    </div>
+    <div class="logout-floating-btn" @click="onloggingOutUser">
+      <i class="fa-solid fa-right-from-bracket"></i>
     </div>
   </div>
 </template>
 
 <script>
+import CalculatorBodyComponent from '@/components/HomeComponents/CalculatorBodyComponent.vue';
+import { mapActions, mapGetters } from 'vuex';
+import { IS_USER_AUTHENTICATED_GETTER, LOGOUT_ACTION } from '@/store/storeConstants';
 export default {
-
+  name: 'HomePage',
+  components: { CalculatorBodyComponent },
+  computed: {
+    ...mapGetters('auth', {
+      isUserAuthenticated: IS_USER_AUTHENTICATED_GETTER
+    })
+  },
+  mounted(){
+    console.log("Is user authenticated: ", this.isUserAuthenticated);
+  },
+  methods: {
+    ...mapActions('auth', {
+      onLogout: LOGOUT_ACTION
+    }),
+    onloggingOutUser() {
+      this.onLogout();
+      this.$router.replace('/login');
+    }
+  }
 }
 </script>
 
-<style scoped>
+<style>
 .home-bg {
   padding: 2rem 0;
   height: 100vh;
@@ -61,40 +73,35 @@ export default {
   margin-bottom: 1rem;
 }
 
-input {
-  width: 45%;
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  outline: none;
-  background: transparent;
+.logout-floating-btn {
+  position: fixed;
+  height: 3rem;
+  width: 3rem;
+  border-radius: 50%;
+  background: #003366;
+  z-index: 999;
+  right: 2rem;
+  bottom: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.3s ease;
 }
 
-.operations {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-}
-
-.calc-operations {
-  width: 22%;
-  padding: 0.5rem;
-  border: none;
-  border-radius: 5px;
-  background-color: #003366;
-  color: #fff;
-  font-size: 1.2rem;
+.logout-floating-btn:hover {
+  box-shadow: 0 8px 10px rgba(0, 0, 0, 0.15), 0 4px 6px rgba(0, 0, 0, 0.10);
   cursor: pointer;
-  transition: all ease-in 0.3s;
 }
 
-.calc-operations:hover {
-  background-color: #5a97d3;
+.logout-floating-btn i {
+  color: #fff;
+  position: relative;
+  top: 0.7rem;
+  left: 1rem;
 }
 
-.result {
-  width: 100%;
-  padding: 1rem;
-  border-top: 1px solid #eee;
+@media only screen and (max-width: 768px) {
+  .logout-floating-btn {
+    right: 1rem;
+    bottom: 1rem;
+  }
 }
 </style>
