@@ -29,8 +29,9 @@ export default {
 
 .login-card {
   width: 40rem;
-  height: 100%;
+  height: 28rem;
   padding: 4rem 1rem;
+  border: 2px solid #fff;
   background: rgb(255, 255, 255, 0.1);
   backdrop-filter: blur(25px);
   border-radius: 20px;
@@ -41,7 +42,6 @@ export default {
 
 @media only screen and (max-width: 768px) {
   .login-bg {
-    height: 50%;
     width: 100%;
     padding: 2rem 0;
   }
@@ -50,6 +50,8 @@ export default {
     display: flex;
     flex-direction: column;
     width: 80%;
+    height: fit-content;
+    padding: 3rem 0;
   }
 }
 </style>

@@ -8,7 +8,7 @@
 import LoginBgImage from '../../assets/images/login-bg-image.png'
 export default {
     name: 'LoginBgImage',
-    data(){
+    data() {
         return {
             imageSrc: LoginBgImage,
         }
@@ -26,7 +26,19 @@ export default {
 }
 
 .login-image img {
-    height: 100%;
-    width: 100%;
+    height: 20rem;
+    width: 20rem;
+}
+
+@media only screen and (max-width: 768px) {
+
+    .login-image {
+        margin-bottom: 0.5rem;
+    }
+
+    .login-image img {
+        height: 10rem;
+        width: 10rem;
+    }
 }
 </style>

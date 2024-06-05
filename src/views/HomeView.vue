@@ -46,8 +46,9 @@ export default {
 
 .calculator-card {
   width: 20rem;
-  height: 100%;
+  height: 27rem;
   padding: 4rem 1rem;
+  border: 2px solid #fff;
   background: rgb(255, 255, 255, 0.1);
   backdrop-filter: blur(25px);
   border-radius: 20px;

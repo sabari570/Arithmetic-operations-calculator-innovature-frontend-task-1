@@ -63,12 +63,10 @@ export default {
             } catch (error) {
                 console.log("Error while calculation api: ", error);
                 if (error.response && error.response.status === 403) {
-                    this.setErrorMessage("Token is not valid, Logging out in 3 seconds");
-                    setTimeout(() => {
-                        this.onLogout();
-                        this.$router.replace('/login');
-                        this.setErrorMessage("");
-                    }, 3000);
+                    this.setErrorMessage("Token is not valid");
+                    this.onLogout();
+                    this.$router.replace('/login');
+                    this.setErrorMessage("");
                 } else if (error.response && error.response.data && error.response.data.message) {
                     this.setErrorMessage(error.response.data.message);
                 } else {

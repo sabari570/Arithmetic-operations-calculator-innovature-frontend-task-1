@@ -56,6 +56,8 @@ export default {
         async onLoginFormSubmit() {
             this.showLoading(true)
             await this.onLogin({ username: this.username, password: this.password })
+            this.username = ""
+            this.password = ""
             this.showLoading(false)
 
             if (this.isUserAuthenticated) {
@@ -130,5 +132,11 @@ input {
 
 .login-btn:hover {
     background-color: #5a97d3;
+}
+
+@media only screen and (max-width: 768px) {
+    input {
+        margin-bottom: 1rem;
+    }
 }
 </style>
