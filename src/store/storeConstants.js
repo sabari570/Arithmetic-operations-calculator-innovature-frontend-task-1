@@ -1,4 +1,5 @@
 export const LOGIN_ACTION = "[actions] login_user";
+export const REGISTER_ACTION = "[actions] register_user";
 export const ERROR_MESSAGE_MUTATION = "[mutations] error_message";
 export const ERROR_MESSAGE_GETTER = "[getters] error_message_getter";
 export const SET_USER_DATA_MUTATION = "[mutations] set_user_data";

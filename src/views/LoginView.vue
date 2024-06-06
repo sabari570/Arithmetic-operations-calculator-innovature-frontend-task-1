@@ -1,24 +1,30 @@
 <template>
-  <div class="login-bg">
-    <div class="login-card">
-      <LoginBgImageVue />
+  <div class="auth-bg">
+    <div class="auth-card">
+      <LoginBgImageVue :imageSrc="LoginBgImageSrc" />
       <LoginFormComponentVue />
     </div>
   </div>
 </template>
 
 <script>
-import LoginBgImageVue from '@/components/LoginComponents/LoginBgImage.vue'
+import LoginBgImageSrc from '../assets/images/login-bg-image.png'
+import LoginBgImageVue from '@/components/LoginComponents/AuthBgImage.vue'
 import LoginFormComponentVue from '@/components/LoginComponents/LoginFormComponent.vue'
 
 export default {
   name: 'LoginView',
   components: { LoginBgImageVue, LoginFormComponentVue },
+  data() {
+    return {
+      LoginBgImageSrc,
+    }
+  }
 }
 </script>
 
 <style>
-.login-bg {
+.auth-bg {
   padding: 3rem;
   height: 100vh;
   width: 100vw;
@@ -27,7 +33,7 @@ export default {
   justify-content: center;
 }
 
-.login-card {
+.auth-card {
   width: 40rem;
   height: 28rem;
   padding: 4rem 1rem;
@@ -41,12 +47,12 @@ export default {
 }
 
 @media only screen and (max-width: 768px) {
-  .login-bg {
+  .auth-bg {
     width: 100%;
     padding: 2rem 0;
   }
 
-  .login-card {
+  .auth-card {
     display: flex;
     flex-direction: column;
     width: 80%;

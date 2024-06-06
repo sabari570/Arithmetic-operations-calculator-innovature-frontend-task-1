@@ -1,23 +1,23 @@
 <template>
-    <div class="login-image">
+    <div class="auth-image">
         <img :src="imageSrc" alt="Login bg image" />
     </div>
 </template>
 
 <script>
-import LoginBgImage from '../../assets/images/login-bg-image.png'
 export default {
-    name: 'LoginBgImage',
-    data() {
-        return {
-            imageSrc: LoginBgImage,
+    name: 'AuthBgImage',
+    props: {
+        imageSrc: {
+            type: String,
+            required: true,
         }
-    }
+    },
 }
 </script>
 
 <style>
-.login-image {
+.auth-image {
     display: flex;
     flex: 1;
     align-items: center;
@@ -25,18 +25,18 @@ export default {
     margin-bottom: 1.5rem;
 }
 
-.login-image img {
+.auth-image img {
     height: 20rem;
     width: 20rem;
 }
 
 @media only screen and (max-width: 768px) {
 
-    .login-image {
+    .auth-image {
         margin-bottom: 0.5rem;
     }
 
-    .login-image img {
+    .auth-image img {
         height: 10rem;
         width: 10rem;
     }
