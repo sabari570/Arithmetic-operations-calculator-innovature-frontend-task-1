@@ -64,13 +64,13 @@ This repository contains a Vue application that performs basic arithmetic operat
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/arithmetic-operation-app.git
+git clone https://github.com/sabari570/Arithmetic-operations-calculator-innovature-frontend-task-1.git
 ```
 
 2. Navigate to the project directory:
 
 ```bash
-cd arithmetic-operation-app
+cd Arithmetic-operations-calculator-innovature-frontend-task-1
 ```
 
 3. Install dependencies:
